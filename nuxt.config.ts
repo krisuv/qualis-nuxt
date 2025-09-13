@@ -1,11 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from "node:url";
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/image', '@nuxt/eslint'],
-  css: ['~/assets/main.css', '~/assets/tailwind.css'],
+  // ssr: false, // SSR is now enabled with ClientOnly components
+  components: [
+    {
+      path: '~/app/components',
+      pathPrefix: false,
+    }
+  ],
+  css: ['./app/assets/css/main.css', './app/assets/css/tailwind.css'],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   runtimeConfig: {
     public: {
       apiBase: process.env.API_BASE_URL || 'http://localhost:1337',
@@ -13,7 +24,7 @@ export default defineNuxtConfig({
     }
   },
   plugins: [
-    '~/plugins/vue-recaptcha.plugin'
+    './app/plugins/vue-recaptcha.plugin'
   ],
   alias: {
     'constants': fileURLToPath(new URL('./app/utils/constants', import.meta.url)),

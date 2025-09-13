@@ -19,17 +19,17 @@
     </section>
 
     <div class="side-images-wrapper flex-1/2">
-      <img class="side-image side-image-1" src="@/assets/img/hero-1.jpg" alt="" />
-      <img class="side-image side-image-2" src="@/assets/img/hero-2.jpg" alt="" />
-      <img class="side-image side-image-3" src="@/assets/img/hero-3.jpg" alt="" />
-      <img class="side-image side-image-4" src="@/assets/img/hero-4.jpg" alt="" />
-      <img class="side-image side-image-5" src="@/assets/img/hero-5.jpg" alt="" />
+      <img class="side-image side-image-1" src="/img/hero-1.jpg" alt="" />
+      <img class="side-image side-image-2" src="/img/hero-2.jpg" alt="" />
+      <img class="side-image side-image-3" src="/img/hero-3.jpg" alt="" />
+      <img class="side-image side-image-4" src="/img/hero-4.jpg" alt="" />
+      <img class="side-image side-image-5" src="/img/hero-5.jpg" alt="" />
     </div>
   </div>
 </template>
 
 <style scoped>
-@reference '../../assets/tailwind.css';
+@reference '../../assets/css/tailwind.css';
 
 section {
   min-height: calc(100vh - (var(--spacing) * 16));

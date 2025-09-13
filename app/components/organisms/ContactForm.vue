@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { sendMessage } from 'api/messages.api'
-import DescriptionInput from '../atoms/DescriptionInput.vue'
-import ImageInput from '../atoms/ImageInput.vue'
-import RangeInput from '../atoms/RangeInput.vue'
-import TextInput from '../atoms/TextInput.vue'
 import { computed, ref } from 'vue'
 import { useReCaptcha } from 'vue-recaptcha-v3'
 import { wait } from 'helpers/api.helpers'
+import TextInput from '../atoms/TextInput.vue'
+import DescriptionInput from '../atoms/DescriptionInput.vue'
+import ImageInput from '../atoms/ImageInput.vue'
+import RangeInput from '../atoms/RangeInput.vue'
 
-const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()!;
+const recaptcha = useReCaptcha();
+const { executeRecaptcha, recaptchaLoaded } = recaptcha || { executeRecaptcha: null, recaptchaLoaded: null };
 
 const priceRange = ref<[number, number]>([1500, 4200]);
 const email = ref('');
@@ -38,8 +39,15 @@ async function onSubmit(event: Event): Promise<void> {
   event.preventDefault();
 
   try {
-    await recaptchaLoaded();
-    const token = await executeRecaptcha('submit_contact_form');
+    let token = 'development-token';
+    
+    // Only use reCAPTCHA if it's properly configured
+    if (recaptchaLoaded && executeRecaptcha) {
+      await recaptchaLoaded();
+      token = await executeRecaptcha('submit_contact_form');
+    } else {
+      console.log('reCAPTCHA not configured - using development token');
+    }
     
     await sendMessage({
       authorName: authorName.value,

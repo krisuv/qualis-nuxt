@@ -1,8 +1,14 @@
-import type { StrapiImage } from "@/typescript/interfaces";
+import type { StrapiImage } from "types/interfaces";
 import axios from "axios";
 
 export async function uploadImages(files: File[]): Promise<number[]> {
   if (!files.length) return [];
+  
+  // Only run on client side (browser)
+  if (process.server) {
+    console.log('Image upload skipped on server side');
+    return [];
+  }
   const config = useRuntimeConfig();
 
   const formData = new FormData();

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import BookshelfIcon from '../atoms/BookshelfIcon.vue'
-import BedIcon from '../atoms/BedIcon.vue'
-import { GalleryItemCategory } from '@/typescript/enums'
+import { GalleryItemCategory } from 'types/enums'
+import EllipsisIcon from '@heroicons/vue/24/outline/EllipsisHorizontalIcon';
 import AllCategoriesIcon from '../atoms/AllCategoriesIcon.vue'
-import SinkIcon from '../atoms/SinkIcon.vue'
 import KichtenIcon from '../atoms/KichtenIcon.vue'
 import TvTableIcon from '../atoms/TvTableIcon.vue'
+import BedIcon from '../atoms/BedIcon.vue'
+import BookshelfIcon from '../atoms/BookshelfIcon.vue'
+import SinkIcon from '../atoms/SinkIcon.vue'
 import TableLampIcon from '../atoms/TableLampIcon.vue'
-import EllipsisIcon from '@heroicons/vue/24/outline/EllipsisHorizontalIcon';
 
 interface CategoriesCarouselProps {
   selectedCategory: GalleryItemCategory | null

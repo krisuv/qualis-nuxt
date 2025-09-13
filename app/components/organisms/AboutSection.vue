@@ -39,7 +39,7 @@ watch(isOpen, async (value) => {
       >
         <img
           alt="Artykuł o mnie z Gazety Przemysłu Drzewnego z listopada 2017. Kliknij, aby zobaczyć cały."
-          src="@/assets/img/uncle.png"
+          src="/img/uncle.png"
         />
       </button>
 
@@ -144,7 +144,7 @@ watch(isOpen, async (value) => {
 </template>
 
 <style scoped>
-@reference '../../assets/tailwind.css';
+@reference '../../assets/css/tailwind.css';
 
 dialog {
   scrollbar-color: var(--color-black-earth-700) var(--color-black-earth-200);

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import BedIcon from './BedIcon.vue';
-import BookshelfIcon from './BookshelfIcon.vue';
-import KichtenIcon from './KichtenIcon.vue';
-import SinkIcon from './SinkIcon.vue';
+import BedIcon from './BedIcon.vue'
+import BookshelfIcon from './BookshelfIcon.vue'
+import SinkIcon from './SinkIcon.vue'
+import KichtenIcon from './KichtenIcon.vue'
 </script>
 
 <template>

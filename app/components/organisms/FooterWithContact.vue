@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import SocialLink from '../atoms/SocialLink.vue';
 import { EnvelopeIcon } from '@heroicons/vue/24/outline';
 import { PhoneIcon } from '@heroicons/vue/24/solid';
-import InstagramIcon from '../atoms/InstagramIcon.vue';
+import SocialLink from '../atoms/SocialLink.vue'
+import InstagramIcon from '../atoms/InstagramIcon.vue'
 </script>
 
 <template>

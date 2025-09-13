@@ -35,7 +35,7 @@ const config = {
 </template>
 
 <style>
-@reference '../../assets/tailwind.css';
+@reference '../../assets/css/tailwind.css';
 
 .carousel {
   @apply h-full p-0;

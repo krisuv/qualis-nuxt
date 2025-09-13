@@ -1,5 +1,5 @@
-import { ImageSize } from "@/typescript/enums";
-import type { StrapiImage, StrapiMediaThumbnail } from "@/typescript/interfaces";
+import { ImageSize } from "types/enums";
+import type { StrapiImage, StrapiMediaThumbnail } from "types/interfaces";
 
 export function getImageFormatBySize(image: StrapiImage, size: ImageSize): StrapiMediaThumbnail {
   const imageBySize =  image.formats[size];

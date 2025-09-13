@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { GalleryItem } from '@/typescript/interfaces';
+import type { GalleryItem } from 'types/interfaces';
 import { MagnifyingGlassPlusIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { nextTick, ref, watch } from 'vue'
-import ImageCarousel from '../molecules/ImageCarousel.vue';
+import ImageCarousel from '../molecules/ImageCarousel.vue'
 
 defineProps<GalleryItem>()
 
@@ -27,7 +27,7 @@ watch(dialogOpen, async (value) => {
   <button @click="dialogOpen = true" class="bg-light-beige shadow-lg rounded-lg h-[420px] max-w-[320px] group p-0 min-w-[320px] text-left font-normal hover:brightness-105 focus-visible:brightness-105">
     <div class="overflow-hidden rounded-lg cursor-pointer relative h-[50%]">
       <img
-        :src="images[0].small.url"
+        :src="images[0]!.small.url"
         :alt="''"
         class="transition-transform duration-300 ease-in-out group-hover:scale-115 group-focus-visible:scale-115 h-full w-full object-cover"
       />
@@ -55,7 +55,7 @@ watch(dialogOpen, async (value) => {
     @close="dialogOpen = false"
   >
     <!-- <img :src="images[0].large.url" :alt="''" class="w-[70%] h-auto mb-4 rounded-lg object-cover" /> -->
-    <ImageCarousel :images="images.map((image, index) => ({ src: images[index].large.url, alt: images[index].large.ext || '' }))" />
+    <ImageCarousel :images="images.map((image, index) => ({ src: images[index]!.large.url, alt: images[index]!.large.ext || '' }))" />
 
     <div class="flex-1/3">
       <div class="flex justify-between items-center mb-8">
@@ -78,7 +78,7 @@ watch(dialogOpen, async (value) => {
 </template>
 
 <style>
-@reference '../../assets/tailwind.css';
+@reference '../../assets/css/tailwind.css';
 
 body:has(dialog#image-dialog[open]) {
   overflow: hidden;

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import GalleryCard from './GalleryCard.vue'
-import CategoriesCarousel from './CategoriesCarousel.vue'
 import type { GalleryItem } from 'types/interfaces'
 import { onMounted, ref, watch } from 'vue'
 import { getGallery } from 'api/gallery.api'
 import { AxiosError } from 'axios'
-import type { GalleryItemCategory } from 'types/enums'
+import { GalleryItemCategory } from 'types/enums'
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from 'constants/pagination.constants'
+import CategoriesCarousel from './CategoriesCarousel.vue'
+import GalleryCard from './GalleryCard.vue'
 
 const galleryItems = ref<GalleryItem[]>([]);
 const selectedCategory = ref<GalleryItemCategory | null>(null);
@@ -24,19 +24,51 @@ async function handleGetGallery(): Promise<void> {
      if(error instanceof AxiosError){
       switch(error.code){
         case 'ERR_NETWORK':
-          console.log('not connected')
+          console.log('Backend not connected - using mock data for development')
+          // Use mock data when backend is not available
+          galleryItems.value = [
+            {
+              documentId: '1',
+              name: 'Przykładowy mebel kuchenny',
+              category: GalleryItemCategory.KITCHEN,
+              description: 'To jest przykładowy opis mebla kuchennego. W prawdziwej aplikacji dane będą pobierane z bazy danych.',
+              images: [
+                {
+                  small: { url: '/img/sofa.jpg', ext: 'jpg' },
+                  large: { url: '/img/sofa.jpg', ext: 'jpg' }
+                }
+              ]
+            },
+            {
+              documentId: '2', 
+              name: 'Szafa do sypialni',
+              category: GalleryItemCategory.BEDROOM,
+              description: 'Przykładowa szafa do sypialni wykonana na wymiar.',
+              images: [
+                {
+                  small: { url: '/img/sofa.jpg', ext: 'jpg' },
+                  large: { url: '/img/sofa.jpg', ext: 'jpg' }
+                }
+              ]
+            }
+          ];
           break;
         default:
           console.log('other error');
           break;  
       }
      } 
-     galleryItems.value = [];
+     if (galleryItems.value.length === 0) {
+       galleryItems.value = [];
+     }
   }
 }
 
 onMounted(() => {
-  handleGetGallery();
+  // Only run API calls on client side
+  if (process.client) {
+    handleGetGallery();
+  }
 });
 
 watch(selectedCategory, handleGetGallery);
