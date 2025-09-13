@@ -1,0 +1,299 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer base {
+  /* Variable font – normal */
+  @font-face {
+    font-family: 'Playfair Display Variable';
+    src: url('/src/assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.ttf')
+         format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Variable font – italic */
+  @font-face {
+    font-family: 'Playfair Display Variable';
+    src: url('/src/assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.ttf')
+         format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Static fonts – fallback or browser compatibility */
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url('/src/assets/fonts/playfair-display/static/PlayfairDisplay-Regular.ttf')
+         format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url('/src/assets/fonts/playfair-display/static/PlayfairDisplay-Medium.ttf')
+         format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url('/src/assets/fonts/playfair-display/static/PlayfairDisplay-Bold.ttf')
+         format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url('/src/assets/fonts/playfair-display/static/PlayfairDisplay-Black.ttf')
+         format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('src/assets/fonts/inter/static/Inter_18pt-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('src/assets/fonts/inter/static/Inter_18pt-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('src/assets/fonts/inter/static/Inter_18pt-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Możesz dodać kolejne style z katalogu static, np. italic, semibold itd. */
+
+  html {
+    font-size: 16px;
+     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased; /* For WebKit (Chrome, Safari) */
+    -moz-osx-font-smoothing: grayscale;  /* For Firefox on macOS */
+    scroll-behavior: smooth;
+    scrollbar-color: var(--color-black-earth-700) var(--color-black-earth-200);
+    scrollbar-width: thin;
+  }
+
+  body {
+   background-color: var(--color-creamy);
+   min-height: 100vh;
+   overflow-x: hidden;
+
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-black-earth);
+    font-weight: 700;
+  }
+
+  h1, h2 {
+    font-family: 'Playfair Display Variable', 'Playfair Display', serif;
+    font-size: 2.25rem;
+    line-height: 2.50rem;
+  }
+
+  p, label, b, input, caption, span, small, address, a, textarea {
+    @apply text-charcoal;
+    font-style: normal;
+  }
+
+  small {
+    display: block;
+  }
+
+  h1 {
+    font-weight: 900;
+  }
+  
+  h2 {
+    font-weight: 800;
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+     padding-bottom: calc(var(--spacing) * 2);
+  }
+
+  h5 {
+    font-size: 1.1rem;
+    padding-bottom: calc(var(--spacing) * 1.5);
+  }
+  
+  p {
+     font-size: 1rem;
+     line-height: 1.6rem;
+  }
+
+  input, textarea {
+    display: block;
+    font-size: 0.875rem;
+    padding-block: calc(var(--spacing) * 1.5);
+    padding-inline: calc(var(--spacing) * 3);
+    border: 1px solid;
+    border-color: var(--color-charcoal);
+    border-radius: var(--radius-lg);
+  }
+
+  button,
+  .button {
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 14px;
+    padding-block: calc(var(--spacing) * 2);
+    padding-inline:  calc(var(--spacing) * 3);
+    text-align: center;
+    color: var(--color-creamy);
+    cursor: pointer;
+    min-width: 5.8rem;
+
+    &:hover {
+      filter: brightness(1.3);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      filter: brightness(1.15);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus-visible {
+      outline: var(--spacing) solid var(--color-charcoal-700);
+      text-decoration: underline;
+    }
+  }
+
+  section {
+    padding-block: calc(var(--spacing) * 4);
+    padding-inline: calc(var(--spacing) * 8.5);
+    margin-inline: auto;
+    width: min(100%, 70rem);
+  }
+}
+
+@theme {
+  /* black-earth */
+  --color-black-earth-50: oklch(0.95 0.01 60);
+  --color-black-earth-100: oklch(0.90 0.02 60);
+  --color-black-earth-200: oklch(0.80 0.03 60);
+  --color-black-earth-300: oklch(0.70 0.04 60);
+  --color-black-earth-400: oklch(0.60 0.05 60);
+  --color-black-earth-500: oklch(0.50 0.06 60);
+  --color-black-earth-600: oklch(0.41 0.06 60);
+  --color-black-earth-700: oklch(0.35 0.05 60);
+  --color-black-earth-800: oklch(0.28 0.04 60);
+  --color-black-earth-900: oklch(0.20 0.03 60);
+  --color-black-earth-950: oklch(0.13 0.02 60);
+  --color-black-earth: #694F35;
+
+  /* light-beige */
+  --color-light-beige-50: oklch(0.99 0.01 80);
+  --color-light-beige-100: oklch(0.95 0.02 80);
+  --color-light-beige-200: oklch(0.90 0.03 80);
+  --color-light-beige-300: oklch(0.85 0.04 80);
+  --color-light-beige-400: oklch(0.80 0.05 80);
+  --color-light-beige-500: oklch(0.75 0.06 80);
+  --color-light-beige-600: oklch(0.70 0.06 80);
+  --color-light-beige-700: oklch(0.65 0.05 80);
+  --color-light-beige-800: oklch(0.60 0.04 80);
+  --color-light-beige-900: oklch(0.55 0.03 80);
+  --color-light-beige-950: oklch(0.50 0.02 80);
+  --color-light-beige: #F2EAE2;
+
+  /* creamy */
+  --color-creamy-50: oklch(0.99 0.01 85);
+  --color-creamy-100: oklch(0.95 0.02 85);
+  --color-creamy-200: oklch(0.90 0.03 85);
+  --color-creamy-300: oklch(0.85 0.04 85);
+  --color-creamy-400: oklch(0.80 0.05 85);
+  --color-creamy-500: oklch(0.75 0.06 85);
+  --color-creamy-600: oklch(0.70 0.06 85);
+  --color-creamy-700: oklch(0.65 0.05 85);
+  --color-creamy-800: oklch(0.60 0.04 85);
+  --color-creamy-900: oklch(0.55 0.03 85);
+  --color-creamy-950: oklch(0.50 0.02 85);
+  --color-creamy:#FBF7F2;
+
+  /* dust-olive */
+  --color-dust-olive-50: oklch(0.95 0.01 100);
+  --color-dust-olive-100: oklch(0.90 0.02 100);
+  --color-dust-olive-200: oklch(0.80 0.03 100);
+  --color-dust-olive-300: oklch(0.70 0.04 100);
+  --color-dust-olive-400: oklch(0.60 0.05 100);
+  --color-dust-olive-500: oklch(0.50 0.06 100);
+  --color-dust-olive-600: oklch(0.40 0.06 100);
+  --color-dust-olive-700: oklch(0.30 0.05 100);
+  --color-dust-olive-800: oklch(0.20 0.04 100);
+  --color-dust-olive-900: oklch(0.15 0.03 100);
+  --color-dust-olive-950: oklch(0.10 0.02 100);
+  --color-dust-olive:  #867F6C;
+
+  /* charcoal */
+  --color-charcoal-50: oklch(0.95 0.01 270);
+  --color-charcoal-100: oklch(0.90 0.02 270);
+  --color-charcoal-200: oklch(0.80 0.03 270);
+  --color-charcoal-300: oklch(0.70 0.04 270);
+  --color-charcoal-400: oklch(0.60 0.05 270);
+  --color-charcoal-500: oklch(0.50 0.06 270);
+  --color-charcoal-600: oklch(0.40 0.06 270);
+  --color-charcoal-700: oklch(0.30 0.05 270);
+  --color-charcoal-800: oklch(0.20 0.04 270);
+  --color-charcoal-900: oklch(0.15 0.03 270);
+  --color-charcoal-950: oklch(0.10 0.02 270);
+  --color-charcoal:  #333333;
+
+    /* graphite */
+ --color-graphite-50: oklch(0.95 0.01 280);
+  --color-graphite-100: oklch(0.90 0.02 280);
+  --color-graphite-200: oklch(0.80 0.03 280);
+  --color-graphite-300: oklch(0.70 0.04 280);
+  --color-graphite-400: oklch(0.60 0.05 280);
+  --color-graphite-500: oklch(0.50 0.06 280);
+  --color-graphite-600: oklch(0.40 0.06 280);
+  --color-graphite-700: oklch(0.30 0.05 280);
+  --color-graphite-800: oklch(0.20 0.04 280);
+  --color-graphite-900: oklch(0.13 0.03 280);
+  --color-graphite-950: oklch(0.08 0.02 280);
+  --color-graphite:  #1E1E1E;
+
+  /* fonts */
+  --font-playfair: 'Playfair Display', serif;
+}
+
+@layer utilities {
+    .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
