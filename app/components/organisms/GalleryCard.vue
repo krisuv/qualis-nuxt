@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GalleryItem } from 'types/interfaces';
+import type { GalleryItem } from '../../utils/types/interfaces';
 import { MagnifyingGlassPlusIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { nextTick, ref, watch } from 'vue'
 import ImageCarousel from '../molecules/ImageCarousel.vue'
