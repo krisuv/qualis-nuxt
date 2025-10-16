@@ -66,7 +66,7 @@ async function handleGetGallery(): Promise<void> {
 
 onMounted(() => {
   // Only run API calls on client side
-  if (process.client) {
+  if (import.meta.client) {
     handleGetGallery();
   }
 });
@@ -79,12 +79,12 @@ watch(selectedCategory, handleGetGallery);
   <section id="gallery" class="py-5 px-8.6">
     <h2>Galeria</h2>
     <p>
-      Moja twórczość to nie tylko standardowe meble, jakie widzisz w mieszkaniach, ale też bardziej wymagające zamówienia pod indywidualne preferencje. Sprawdź po poszczególnych kategoriach
+      Moja twórczość to nie tylko standardowe meble, jakie widzisz w mieszkaniach, ale też bardziej wymagające zamówienia pod indywidualne preferencje. <b>Sprawdź po poszczególnych kategoriach.</b>
     </p>
 
     <CategoriesCarousel v-model:selected-category="selectedCategory" />
 
-    <h3>Znaleziono</h3>
+    <!-- <h3>Znaleziono</h3> -->
 
     <!-- https://iconoir.com/ ikonki -->
     <!-- https://www.figma.com/design/01kbeCD3TAUqHaU1SZnCOg/Furniture---Appliances-Icons--Community-?node-id=139-7&t=BQSEw3CQ0YESgcm1-0 -->

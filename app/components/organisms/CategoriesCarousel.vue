@@ -97,7 +97,7 @@ function choose(value: GalleryItemCategory | null, e: MouseEvent) {
 
 <template>
   <div class="-mx-8.5">
-    <label for="categories" class="block font-bold mb-1 text-black-earth-800 px-8.5">
+    <label for="categories" class="block font-bold mt-4 mb-1 text-black-earth-800 px-8.5">
       Kategorie
     </label>
 
@@ -127,13 +127,13 @@ function choose(value: GalleryItemCategory | null, e: MouseEvent) {
           <button
             type="button"
             :aria-pressed="selectedCategory === category.value"
-            @click="choose(category.value, $event)"
             class="w-28 h-28 rounded-xl border border-black-earth/50 px-4 py-3 flex flex-col items-center justify-center text-sm font-semibold transition-colors duration-200"
             :class="
               selectedCategory === category.value
                 ? 'bg-black-earth-200' /* selected – no hover tint */
                 : 'hover:bg-black-earth/10' /* unselected + hover */
             "
+            @click="choose(category.value, $event)"
           >
             <component :is="category.icon" class="text-black-earth-800 w-8 h-8 mb-2"  />
             <span class="capitalize text-black-earth-900" >{{ category.label }}</span>

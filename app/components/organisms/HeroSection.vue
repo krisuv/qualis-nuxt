@@ -3,9 +3,7 @@
     <section class="pt-40 lg:pt-0 flex-1/2 lg:px-40 flex flex-col lg:justify-center lg:-mt-40">
       <h2 class="pb-5 font-black">Meble na Wymiar w Pyrzycach</h2>
       <p class="pb-10">
-        Lorem ipsum dolor sit amet consectetur. Nec a auctor ipsum tellus. Gravida purus venenatis
-        diam eu lectus. Nulla arcu viverra eu sociis amet amet diam. Ultricies tincidunt sapien nunc
-        commodo at urna massa.
+        Tworzę meble, które idealnie dopasowują się do Twojego wnętrza i stylu życia. Każdy projekt powstaje z pasją, precyzją i dbałością o najdrobniejsze detale — od pierwszego szkicu po montaż. Wykorzystuję najwyższej jakości materiały i sprawdzone rozwiązania stolarskie, by Twoje meble służyły przez lata. Postaw na rzemiosło z duszą prosto z Pyrzyc.
       </p>
 
       <div class="flex flex-col gap-7.5 w-fit">
@@ -19,11 +17,12 @@
     </section>
 
     <div class="side-images-wrapper flex-1/2">
-      <img class="side-image side-image-1" src="/img/hero-1.jpg" alt="" />
-      <img class="side-image side-image-2" src="/img/hero-2.jpg" alt="" />
-      <img class="side-image side-image-3" src="/img/hero-3.jpg" alt="" />
-      <img class="side-image side-image-4" src="/img/hero-4.jpg" alt="" />
-      <img class="side-image side-image-5" src="/img/hero-5.jpg" alt="" />
+      <NuxtImg src="/img/hero-1.jpg" alt="" class="side-image side-image-1" loading="eager" :preload="true" placeholder="blur" />
+      <!-- <img class="side-image side-image-1" src="/img/hero-1.jpg" alt="" > -->
+      <img class="side-image side-image-2" src="/img/hero-2.jpg" alt="" >
+      <img class="side-image side-image-3" src="/img/hero-3.jpg" alt="" >
+      <img class="side-image side-image-4" src="/img/hero-4.jpg" alt="" >
+      <img class="side-image side-image-5" src="/img/hero-5.jpg" alt="" >
     </div>
   </div>
 </template>

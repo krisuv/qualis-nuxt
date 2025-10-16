@@ -25,27 +25,22 @@ watch(isOpen, async (value) => {
       <div class="mb-8">
         <h2>O mnie</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias laborum maxime
-          voluptatem fuga quia velit aliquid sed, odio aut tempora. Quibusdam id molestiae alias
-          reprehenderit, doloremque debitis quod sunt consequuntur praesentium eveniet quos animi
-          nihil necessitatibus neque magnam nobis. Culpa debitis itaque amet necessitatibus labore
-          ducimus officiis nemo magni odit cumque vel tenetur quam doloribus, iure temporibus
-          voluptate suscipit reiciendis expedita sint non ipsam, ad perspiciatis?
+          Nazywam się Piotr Domański i od ponad dwóch dekad z pasją tworzę meble oraz wyjątkowe wyroby z drewna w mojej pracowni w Pyrzycach. Każde zlecenie traktuję jak artystyczne wyzwanie — od projektu, przez dobór materiałów, aż po perfekcyjne wykonanie. Łączę tradycyjne rzemiosło z nowoczesnymi rozwiązaniami, dbając o trwałość, estetykę i unikalny charakter każdego mebla. Wierzę, że drewno ma duszę - dlatego w moich realizacjach chętnie eksponuję jego naturalne słoje i sęki, które nadają wnętrzom szlachetność i ciepło. Jeśli szukasz mebli, które powstają z sercem i precyzją, zapraszam do współpracy.
         </p>
       </div>
       <button
-        @click="isOpen = true"
         class="bg-light-beige shadow-lg rounded-lg group p-0 hover:brightness-105 hover:shadow-xl focus-visible:brightness-105"
+        @click="isOpen = true"
       >
         <img
           alt="Artykuł o mnie z Gazety Przemysłu Drzewnego z listopada 2017. Kliknij, aby zobaczyć cały."
           src="/img/uncle.png"
-        />
+        >
       </button>
 
       <dialog
-        ref="dialogRef"
         id="uncle-article-dialog"
+        ref="dialogRef"
         class="m-auto rounded-lg p-6 z-10 w-[min(100%,_720px)] open:flex open:gap-8 open:flex-col xl:open:flex-row shadow-sm bg-linear-to-r from-light-beige-300 from-0% via-light-beige-200 via-25% to-50% to-light-beige-100"
         @close="isOpen = false"
       >
@@ -54,8 +49,8 @@ watch(isOpen, async (value) => {
             <h1>Stolarz może też być artystą</h1>
             <button
               aria-labelledby="close-label"
-              @click="isOpen = false"
               class="size-10 rounded-lg bg-black-earth text-light-beige shadow-md flex justify-center items-center min-w-min px-1 py-1 max-w-fit max-h-fit ml-auto"
+              @click="isOpen = false"
             >
               <XMarkIcon class="h-6 w-6" />
             </button>
