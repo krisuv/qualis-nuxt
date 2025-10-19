@@ -32,5 +32,5 @@ RUN echo "=== Build output check ===" && \
 # Expose port
 EXPOSE 3000
 
-# Start the application
-CMD ["serve", "-s", ".output/public", "-l", "3000", "-n"]
+# Start the application with proper SPA configuration  
+CMD ["serve", ".output/public", "-l", "3000", "--single", "200.html"]
