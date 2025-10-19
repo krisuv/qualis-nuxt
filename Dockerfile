@@ -9,6 +9,9 @@ COPY . .
 
 RUN npm run generate
 
+# Copy 200.html to index.html for proper SPA handling
+RUN cp .output/public/200.html .output/public/index.html
+
 RUN npm install -g serve
 
 EXPOSE 3000
