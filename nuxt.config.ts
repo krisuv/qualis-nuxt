@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/image', '@nuxt/eslint'],
+  nitro: {
+    prerender: {
+      crawlLinks: false,
+      ignore: ['/blur']
+    }
+  },
   // ssr: false, // SSR is now enabled with ClientOnly components
   components: [
     {
