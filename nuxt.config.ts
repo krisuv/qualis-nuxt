@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/image', '@nuxt/eslint'],
+  image: {
+    staticFilename: '[name]-[hash][ext]'
+  },
   nitro: {
     prerender: {
       crawlLinks: false,
