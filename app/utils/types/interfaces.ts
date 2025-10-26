@@ -61,13 +61,20 @@ export interface Message {
   city: string;
 }
 
+export interface ProcessedImage {
+  name: string;
+  type: string;
+  size: number;
+  content: string; // base64 content
+}
+
 export interface SendMessageRequest {
   authorName: string;
   text: string;
   minPrice: number;
   maxPrice: number;
   email: string;
-  images: File[];
+  images: ProcessedImage[];
   phoneNumber: number;
   city: string;
 
@@ -82,4 +89,9 @@ export interface PaginationRequest {
 
 export interface GalleryRequest extends PaginationRequest {
   category: GalleryItemCategory | null;
+}
+
+export interface SendMessageResponse {
+  success: boolean;
+  messageId?: string;
 }

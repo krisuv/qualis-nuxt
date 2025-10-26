@@ -22,6 +22,7 @@ const website = ref('');
 
 const submitting = ref(false);
 const isError = ref(false);
+const isSuccess = ref(false);
 
 const isSubmitDisabled = computed<boolean>(() => submitting.value || [email, authorName, city, text].some((inputRef) => !inputRef.value));
 
@@ -38,6 +39,8 @@ async function onSubmit(event: Event): Promise<void> {
   isError.value = false;
   event.preventDefault();
 
+  console.log('event', event);
+
   try {
     let token = 'development-token';
     
@@ -49,7 +52,7 @@ async function onSubmit(event: Event): Promise<void> {
       console.log('reCAPTCHA not configured - using development token');
     }
     
-    await sendMessage({
+    const response = await sendMessage({
       authorName: authorName.value,
       email: email.value,
       city: city.value,
@@ -60,27 +63,31 @@ async function onSubmit(event: Event): Promise<void> {
       maxPrice: priceRange.value[1],
       recaptchaToken: token,
       website: website.value
-    })  
+    });
+  
+    if(!response.success) {
+      isError.value = true;
+    } else {
+      isError.value = false;
+      isSuccess.value = true;
+    }
 
-    isError.value = false;
-    await wait(2000);
-    
   } catch (error: unknown) {
     isError.value = Boolean(error);
   } finally {
+    await wait(2000);
     submitting.value = false;
   }
-
-
 }
 </script>
 
 <template>
   <section id="contact-form" class="w-full max-w-[750px]">
     <h2>Napisz do mnie z Twoim pomysłem na mebel</h2>
-    <p>
+    <p class="pb-6">
       Nie ma przede mną tajemnic 🙂. Jeśli masz konkretny pomysł, chciałbyś coś zaznaczyć już na początku albo chcesz zapytać- tutaj jest na to miejsce. Zwykle odpisuję w ciągu dnia.
     </p>
+    <small class="pb-2">* wymagane</small>
 
     <form @submit="onSubmit">
       <TextInput
@@ -160,7 +167,8 @@ async function onSubmit(event: Event): Promise<void> {
       />
 
       <button type="submit" class="capitalize bg-black-earth mb-5 w-40 disabled:opacity-40 disabled:cursor-default" :disabled="isSubmitDisabled">{{ submitting ? "Wysyłanie..." : "Wyślij" }}</button>
-      <small>* wymagane</small>
+      <p v-if="isError" class="text-shadow-orange-900 py-1.5 px-2 bg-orange-300 mt-6">Wystąpił błąd podczas wysyłania wiadomości. Proszę spróbować ponownie.</p>
+      <p v-if="isSuccess" class="text-shadow-green-900 py-1.5 px-2 bg-green-300 mt-6">Wiadomość została wysłana. Dziękuję za kontakt.</p>
     </form>
   </section>
 </template>

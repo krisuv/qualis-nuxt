@@ -1,43 +1,49 @@
-import type { SendMessageRequest } from "types/interfaces";
-import axios from "axios";
+import type { SendMessageRequest, SendMessageResponse } from "types/interfaces";
 
-export async function sendMessage(data: SendMessageRequest): Promise<void> {
-  const { images, recaptchaToken, ...rest } = data;
-  const config = useRuntimeConfig();
+export async function sendMessage(data: SendMessageRequest): Promise<SendMessageResponse> {
+    console.log('data', data);
+    // Convert File objects to base64 for email attachment
+    const processedImages = await Promise.all(
+      data.images.map(async (file) => {
+        const base64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = reader.result as string;
+            // Remove data:image/...;base64, prefix
+            const base64Content = result.split(',')[1];
+            if (base64Content) {
+              resolve(base64Content);
+            } else {
+              reject(new Error('Failed to convert file to base64'));
+            }
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file as unknown as Blob);
+        });
 
-  try {
-    // Only upload images on client side
-    let imageIds: number[] = [];
-    if (process.client && images.length > 0) {
-      const { uploadImages } = await import("./images.api");
-      imageIds = await uploadImages(images);
-    }
-
-    await axios.post(`${config.public.apiBase}/messages`, {
-      data: {
-        ...rest,
-        images: imageIds
-      },
-
-    },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': recaptchaToken,
-        }
-      }
-
+        return {
+          name: file.name,
+          type: file.type,
+          size: file.size,
+          content: base64
+        };
+      })
     );
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.code === 'ERR_NETWORK') {
-      console.log('Backend not available - message would be sent in production:', {
-        ...rest,
-        images: images.length,
-        recaptchaToken: recaptchaToken ? 'provided' : 'missing'
-      });
-      // In development, we'll just log the message instead of failing
-      return;
+
+    const processedData = {
+      ...data,
+      images: processedImages
+    };
+
+    // Call our internal API route
+    const response = await $fetch<{ success: boolean; messageId?: string }>('/api/send-message', {
+      method: 'POST',
+      body: processedData
+    });
+
+    if (!response.success) {
+      throw new Error('Failed to send message');
     }
-    throw error;
-  }
+
+    return response;
 }

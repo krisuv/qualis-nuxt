@@ -21,11 +21,11 @@
     </section>
 
     <div class="side-images-wrapper flex-1/2">
-      <img class="side-image side-image-1" src="/img/hero-1.jpg" alt="" loading="eager" />
-      <img class="side-image side-image-2" src="/img/hero-2.jpg" alt="" loading="eager" />
-      <img class="side-image side-image-3" src="/img/hero-3.jpg" alt="" loading="eager" />
-      <img class="side-image side-image-4" src="/img/hero-5.jpg" alt="" loading="eager" />
-      <img class="side-image side-image-5" src="/img/hero-4.jpg" alt="" loading="eager" />
+      <img class="side-image side-image-1" src="/img/hero-1.jpg" alt="Meble kuchenne na wymiar w stylu nowoczesnym" loading="eager" />
+      <img class="side-image side-image-2" src="/img/hero-2.jpg" alt="Szafa wnękowa wykonana na wymiar w Pyrzycach" loading="eager" />
+      <img class="side-image side-image-3" src="/img/hero-3.jpg" alt="Meble do salonu wykonane przez stolarza z Pyrzyc" loading="eager" />
+      <img class="side-image side-image-4" src="/img/hero-5.jpg" alt="Meble biurowe na wymiar z naturalnego drewna" loading="eager" />
+      <img class="side-image side-image-5" src="/img/hero-4.jpg" alt="Sypialnia z meblami wykonanymi na wymiar w Pyrzycach" loading="eager" />
     </div>
   </div>
 </template>
@@ -43,7 +43,7 @@ section::before {
   inset: 0;
   background:
     linear-gradient(to bottom right, #694f35, #fbf7f25d),
-    url('../../assets/img/hand-drawn-abstract-outline-background.jpg') center / cover no-repeat;
+    url('/img/background.jpg') center / cover no-repeat;
   z-index: -1;
   top: 0;
   bottom: -120px;
