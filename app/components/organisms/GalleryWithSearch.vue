@@ -29,25 +29,21 @@ async function handleGetGallery(): Promise<void> {
           galleryItems.value = [
             {
               documentId: '1',
-              name: 'Przykładowy mebel kuchenny',
+              name: 'kuchnia wykonana na wymiar',
               category: GalleryItemCategory.KITCHEN,
-              description: 'To jest przykładowy opis mebla kuchennego. W prawdziwej aplikacji dane będą pobierane z bazy danych.',
+              description: 'Wykonana na wymiar kuchnia z naturalnego drewna w odcieniu grafitowym.',
               images: [
                 {
-                  small: { url: '/img/sofa.jpg', ext: 'jpg' },
-                  large: { url: '/img/sofa.jpg', ext: 'jpg' }
-                }
-              ]
-            },
-            {
-              documentId: '2', 
-              name: 'Szafa do sypialni',
-              category: GalleryItemCategory.BEDROOM,
-              description: 'Przykładowa szafa do sypialni wykonana na wymiar.',
-              images: [
+                  small: { url: '/img/gallery/item-1/img-1.jpg', ext: 'jpg' },
+                  large: { url: '/img/gallery/item-1/img-1.jpg', ext: 'jpg' }
+                },
                 {
-                  small: { url: '/img/sofa.jpg', ext: 'jpg' },
-                  large: { url: '/img/sofa.jpg', ext: 'jpg' }
+                  small: { url: '/img/gallery/item-1/img-2.jpg', ext: 'jpg' },
+                  large: { url: '/img/gallery/item-1/img-2.jpg', ext: 'jpg' }
+                },
+                {
+                  small: { url: '/img/gallery/item-1/img-3.jpg', ext: 'jpg' },
+                  large: { url: '/img/gallery/item-1/img-3.jpg', ext: 'jpg' }
                 }
               ]
             }
